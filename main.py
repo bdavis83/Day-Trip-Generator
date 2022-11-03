@@ -12,9 +12,37 @@
 
 import random
 
-destination = ['Detroit', 'Mordor', 'Gondolin','Paris', 'Numenor', 'Boyne City', 'Bozeman', 'Auckland']
-restaurants = ['In N Out Burger', 'MAP Brewery', 'Hells Pizza', 'The Leaky Cauldron', 'Streetside Seafood', 'Bilbos Pizza', 'Dog and Pony Show', 'Als Backyard', ]
-entertainment = ['Skiing', 'Hunting Sauron', 'Drinking Local Grog', 'Sailing', 'Hiking', 'Live Music', 'Archery']
-tranportation = ['Boat', 'Train', 'Floating Piece of Driftwood', 'Snowcat', 'Horse', 'Spitting Llama', '1970s Hearse']
+destination_list = ['Detroit', 'Mordor', 'Gondolin','Paris', 'Numenor', 'Boyne City', 'Bozeman', 'Auckland']
+restaurants_list = ['In N Out Burger', 'MAP Brewery', 'Hells Pizza', 'The Leaky Cauldron', 'Streetside Seafood', 'Bilbos Pizza', 'Dog and Pony Show', 'Als Backyard', ]
+entertainment_list = ['Skiing', 'Hunting Sauron', 'Drinking Local Grog', 'Sailing', 'Hiking', 'Live Music', 'Archery']
+tranportation_list = ['Boat', 'Train', 'Floating Piece of Driftwood', 'Snowcat', 'Horse', 'Spitting Llama', '1970s Hearse']
 
-# this is a test
+def select_rand_dest (destination_list):
+    selected_destination = random.choice(destination_list)
+    return selected_destination
+   
+destinaiton = select_rand_dest (destination_list)
+print (destinaiton)
+
+def select_rand_restaurant (restaurant_list):
+    selected_restaurant = random.choice(restaurant_list)
+    return selected_restaurant
+
+restaurant = select_rand_restaurant (restaurants_list)
+print (restaurant)
+
+def select_rand_entertainment (entertainment_list):
+    selected_entertainemnt = random.choice (entertainment_list)
+    return selected_entertainemnt
+
+entertainment = select_rand_entertainment(entertainment_list)
+print (entertainment)
+
+def select_rand_transport (transportation_list):
+    selected_transportaion = random.choice (tranportation_list)
+    return selected_transportaion
+
+
+transportation = select_rand_transport (tranportation_list)
+print (transportation)
+    
