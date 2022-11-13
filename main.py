@@ -12,133 +12,46 @@
 
 import random
 
-
 destination_list = ['Detroit', 'Mordor', 'Gondolin','Paris', 'Numenor', 'Boyne City', 'Bozeman', 'Auckland']
-
-
-def destination_choice (selected_destination):
-   selected_destination = random.choice (destination_list)
-   return selected_destination
-
-destination = destination_choice (destination_list)
-print (destination)
-
-dest_input = input ('Are you satisfied with this choice (y/n)?')
-
-def dest_input_func (dest_input):
-    confirm_bool = True
-    while confirm_bool:
-        if dest_input == 'n':
-            destination_list.remove (destination)
-        else:
-            confirm_bool = False
-        return destination_choice
-
-destination = destination_choice (destination_list)
-print (destination)
-
-
 restaurant_list = ['In N Out Burger', 'MAP Brewery', 'Hells Pizza', 'The Leaky Cauldron', 'Streetside Seafood', 'Bilbos Pizza', 'Dog and Pony Show', 'Als Backyard', ]
-
-def restaurant_choice (selected_restaurant):
-    selected_restaurant = random.choice(restaurant_list)
-    return selected_restaurant
-
-restaurant = restaurant_choice (restaurant_list)
-print (restaurant)
-
-def rest_input_func (rest_input):
-    confirm_bool = True
-    while confirm_bool:
-        rest_input = input ('Are you satisfired with the restaurant (y/n)?')
-        if dest_input == 'n':
-            restaurant_list.remove (restaurant)
-        else:
-            confirm_bool = False
-        return restaurant_choice
-
-restaurant = restaurant_choice (restaurant_list)
-print (restaurant)
-
-
-
 entertainment_list = ['Skiing', 'Hunting Sauron', 'Drinking Local Grog', 'Sailing', 'Hiking', 'Live Music', 'Archery', 'influencing']
-def entertainment_choice (selected_entertainment):
-   selected_entertainment = random.choice (entertainment_list)
-   return selected_entertainment
-
-entertainment = entertainment_choice (entertainment_list)
-print (entertainment)
-
-entertainment_input = input ('Are you satisfied with this choice (y/n)?')
-
-def dest_input_func (entertainment_input):
-    confirm_bool = True
-    while confirm_bool:
-        entertainment_input = input ('Are you satisfired with your entertainment (y/n)?')
-        if entertainment_input == 'n':
-            entertainment_list.remove (entertainment)
-        else:
-            confirm_bool = False
-        return entertainment_choice
-
-entertainment = entertainment_choice (entertainment_list)
-print (entertainment)
-
-
-
 transportation_list = ['Boat', 'Train', 'Floating Piece of Driftwood', 'Snowcat', 'Horse', 'Spitting Llama', '1970s Hearse', 'bus']
-def transportation_choice (selected_transportation):
-   selected_transportation = random.choice (transportation_list)
-   return selected_transportation
 
-transportation = transportation_choice (transportation_list)
-print (transportation)
 
-transportation_input = input ('Are you satisfied with this choice (y/n)?')
 
-def transportation_input_func (transportation_input):
-    confirm_bool = True
-    while confirm_bool:
-        transportation_input = input ('Are you satisfired with your transportation (y/n)?')
-        if transportation_input == 'n':
-            transportation_list.remove (transportation)
+def select_option (list, string_type):
+    confirm_satisfaction = True
+    while confirm_satisfaction:
+        selected_option = random.choice(list)
+        user_input = input (f'We have selected {selected_option} as your {string_type} option , are you happy with this choice? ')
+        if user_input == 'n':
+            list.remove (selected_option)
         else:
-            confirm_bool = False
-        return transportation_choice
+            confirm_satisfaction = False
+    return selected_option
 
-transportation = transportation_choice (transportation_list)
-print (f'You will be arriving via {transportation}!')
 
+def confirm_trip(dest,tran,rest,ent):
+    print(f'you will arrive in {dest} via a {tran} to enjoy dining at {rest} with {ent} for entertainment! ')
+    user_choice = input("Would you like to confirm (y/n)")
+    if user_choice == "y":
+        print("Enjoy your trip")
+    elif user_choice == "n":
+        print ()
+        print ()
+        print("lets start over")
+        print()
+        print()
+        return generate_trip()
+
+
+def generate_trip():
+    destination = select_option(destination_list, "destination")
+    transportation = select_option(transportation_list, "transportation")
+    entertainment = select_option (entertainment_list, "entertainment")
+    restaurant = select_option (restaurant_list, "restaurant")
+    # we would need to call the function 2 more times
+    confirm_trip(destination,transportation, restaurant, entertainment)
     
 
-
-
-# def print_sequence():
-#     print (destination_list [rand_dest_int])
-#     print (restaurant_list [rand_dest_int] )
-#     print (entertainment_list [rand_entertain_int])
-#     print (transportation_list [rand_transp_int])
-
-
-
-# def run_sequence ():
-#     select_rand_dest (destination)
-#     select_rand_transport (transportation)
-#     select_rand_restaurant (restaurant)
-#     select_rand_entertainment (entertainment)
-#     print_sequence ()
-    
-# run_sequence ()
-
-
-# def user_input_satisfaction ():
-#     satisfaction = input ("Does your trip look good? (y/n)")
-#     while satisfaction:
-#         if satisfaction != 'y':
-#             new_trip = [select_rand_dest (str(destination_list)), select_rand_restaurant (str(restaurant_list)), select_rand_entertainment (str(entertainment_list)), select_rand_transport (str(transportation_list))]
-#             print (new_trip)
-#         else:
-#             satisfaction=True
-            
-# user_input_satisfaction ()
+generate_trip()
